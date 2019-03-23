@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Oliinyk_Lab4.Views.PersonListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Oliinyk_Lab4.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="72*"></ColumnDefinition>
+            <ColumnDefinition Width="28*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="personsList" Grid.Row="0" ItemsSource="{Binding Persons, Mode=OneWay }"  AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True"
+                  SelectionUnit="FullRow" SelectedItem="{Binding SelectedPerson}" CanUserSortColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Birthday" Binding="{Binding StringBirthday}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Adult" Binding="{Binding IsAdult}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Birthday" Binding="{Binding IsBirthday}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sun Sign" Binding="{Binding SunSign}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Chineese Sign" Binding="{Binding ChineseSign}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row ="2" HorizontalAlignment="Stretch" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{Binding CurrentPerson, Mode=OneWay}" Margin="5" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <Button Grid.Column="1" Content="Edit" Margin="5" Height="25" Command="{Binding EditPersonCommand}" VerticalAlignment="Center"></Button>
+            <Button Grid.Column="2" Content="Delete" Margin="5" Height="25" Command="{Binding DeletePersonCommand}" VerticalAlignment="Center"></Button>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1.3*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.7*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.7*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1.3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Sorting" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <CheckBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding IsEnabled}"
+                         IsChecked="{Binding IsDescending}" Content="Descending"></CheckBox>
+            <ComboBox  Height="30" Width="100" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding SelectedProperty}" 
+                        ItemsSource="{Binding PropertiesList, Mode=OneWay}" IsEditable="False"></ComboBox>
+            <Button Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" Width="80" Height="25" Content="Sort" Command="{Binding SortCommand}"></Button>
+            <Separator Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Top"></Separator>
+
+            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Filtration" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="4" Grid.Column="0" Content="Is adult" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="4" Grid.Column="1" Content="Is birthday" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+            <ComboBox   Grid.Row="5" Grid.Column="0" Height="30" Width="100" VerticalAlignment="Top" SelectedIndex="{Binding AdultFilter}" 
+                        ItemsSource="{Binding FilterBool, Mode=OneWay}" IsEditable="False" ></ComboBox>
+            <ComboBox   Grid.Row="5" Grid.Column="1" Height="30" Width="100" VerticalAlignment="Top" SelectedIndex="{Binding BirthdayFilter}" 
+                        ItemsSource="{Binding FilterBool, Mode=OneWay}" IsEditable="False"></ComboBox>
+            <Label Grid.Row="6" Grid.Column="0" Content="Sun sign" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="6" Grid.Column="1" Content="Chineese sign" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+            <ComboBox   Grid.Row="7" Grid.Column="0" Height="30" Width="100" VerticalAlignment="Top" SelectedIndex="{Binding SunSignFilter}"
+                        ItemsSource="{Binding SunSignList, Mode=OneWay}" IsEditable="False"></ComboBox>
+            <ComboBox   Grid.Row="7" Grid.Column="1" Height="30" Width="100" VerticalAlignment="Top" SelectedIndex="{Binding ChineeseSignFilter}" 
+                        ItemsSource="{Binding ChineeseSignList, Mode=OneWay}" IsEditable="False"></ComboBox>
+            <Button Grid.Row="8" Width="80" Height="25"  Grid.Column="0" Grid.ColumnSpan="2" Content="Filter" Command="{Binding FilterCommand}"></Button>
+            <Separator Grid.ColumnSpan="2" Grid.Row="8" VerticalAlignment="Bottom"></Separator>
+
+            <Button Grid.Row="9" Grid.Column="0" Width="80" Height="40" Content="Reset" Command="{Binding ResetCommand}"></Button>
+            <Button Grid.Row="9" Grid.Column="1" Width="80" Height="40" Content="Add person" Command="{Binding AddPersonCommand}"></Button>
+            <Button Grid.Row="10"  Grid.Column="0" Width="80" Height="50" Grid.ColumnSpan="2" Content="Close" Margin="10"  VerticalAlignment="Top" Command="{Binding CloseCommand}"></Button>
+        </Grid>
+    </Grid>
+</UserControl>

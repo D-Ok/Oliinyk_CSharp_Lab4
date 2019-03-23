@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Oliinyk_Lab4.Views.EditInformationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Oliinyk_Lab4.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="950">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.17*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.16*"></RowDefinition>
+            <RowDefinition Height="0.35*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="0.13*"></ColumnDefinition>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="0.06*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="1" Content="Name: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"></Label>
+        <TextBox Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding EditedName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="1" Grid.Column="3" Content="Surname: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold" ></Label>
+        <TextBox Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding EditedSurname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <Label Grid.Row="2" Grid.Column="1" Content="E-mail: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold" ></Label>
+        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding EditedEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="3" Grid.Column="1" Content="Birthday: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"></Label>
+        <TextBlock  Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Birthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="5" Grid.Column="1" Content="SunSign: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"></Label>
+        <TextBlock Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding SunSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <Label Grid.Row="5" Grid.Column="3" Content="ChineseSign: " VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" FontWeight="Bold"></Label>
+        <TextBlock Grid.Row="5" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding ChineseSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+
+        <TextBlock Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5 0 0 0" Text="{Binding IsAdult, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5 0 0 0" Text="{Binding IsBirthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+
+        <Button Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2" Height="30" Width="170" Content="Finish editing" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Command="{Binding EditCommand}"></Button>
+
+    </Grid>
+</UserControl>
